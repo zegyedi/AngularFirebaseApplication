@@ -1,0 +1,15 @@
+
+
+
+  UserName : <div>{{user?.displayName}}</div>   
+  
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="" (click)="logout()">Logout</a></li>
+  </ul>
+
+  Email: <div>{{user?.email}}</div>
+ 
+  <img [src]="getSercureURl(user?.photoURL)"  />
+
+
+
