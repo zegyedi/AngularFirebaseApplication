@@ -1,7 +1,5 @@
 
-
-
-  UserName : <div>{{user?.displayName}}</div>   
+UserName : <div>{{user?.displayName}}</div>   
   
   <ul class="nav navbar-nav navbar-right">
     <li><a href="" (click)="logout()">Logout</a></li>
@@ -9,7 +7,21 @@
 
   Email: <div>{{user?.email}}</div>
  
-  <img [src]="getSercureURl(user?.photoURL)"  />
+  <img *ngIf="user" [src]="getSercureURl(user.photo_source)"  height="100" width="100" />
+
+  
+  <ul>
+    <li   *ngFor="let message of messages | async">
+      <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
+
+      <label>{{message?.userName}} :</label>
+      <label>  {{message?.text}} </label>
+
+    </li>
+  </ul>
+
+ 
+<textarea [(ngModel)]="messageText"  cols="30" rows="10"></textarea>
 
 
-
+<button (click)="sendMessage()">SendMessage</button>

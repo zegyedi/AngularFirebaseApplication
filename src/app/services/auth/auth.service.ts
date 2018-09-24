@@ -21,7 +21,9 @@ export class AuthService {
   async SignedInGoogle() {
     try {
         await this.fireBaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).
-    then(() => this.route.navigateByUrl('chat'));
+    then(() =>  {
+    this.route.navigateByUrl('chat');
+  });
     } catch (error) {
       console.log(error);
     }
@@ -46,14 +48,10 @@ export class AuthService {
     this.route.navigateByUrl('login'));
   }
 
-  async getUser()  {
-     await this.user.subscribe(x => {
-       return x;
-     });
   }
 
 
-}
+
 
 
 

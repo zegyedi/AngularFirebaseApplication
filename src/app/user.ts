@@ -4,12 +4,12 @@ export class ChatUser {
     uid: string;
     displayName: string;
     email: string;
-    photoURL: string;
+    photo_source: string;
 
     constructor(id: string, name: string, email: string, photo: string) {
        this.uid = id;
        this.displayName = name;
        this.email = email;
-       this.photoURL = photo;
+       this.photo_source = photo;
     }
 }
