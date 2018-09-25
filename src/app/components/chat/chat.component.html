@@ -1,27 +1,52 @@
+<div id="navbar" class="navbar-collapse collapse">
+  <ul class="nav navbar-nav">
+    <li class="active">
 
-UserName : <div>{{user?.displayName}}</div>   
-  
-  <ul class="nav navbar-nav navbar-right">
-    <li><a href="" (click)="logout()">Logout</a></li>
+      UserName : <div>{{user?.displayName}}</div>
+    </li>
+    <li><a>
+        Email: {{user?.email}}
+      </a></li>
+    <li><a>
+
+        <img *ngIf="user" [src]="getSercureURl(user.photo_source)" height="100" width="100" />
+      </a></li>
   </ul>
-
-  Email: <div>{{user?.email}}</div>
- 
-  <img *ngIf="user" [src]="getSercureURl(user.photo_source)"  height="100" width="100" />
-
-  
-  <ul>
-    <li   *ngFor="let message of messages | async">
-      <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
-
-      <label>{{message?.userName}} :</label>
-      <label>  {{message?.text}} </label>
-
+  <ul class="nav navbar-nav navbar-right">
+    <li><button class="btn btn-primary btn-success btn-lg" (click)="logOut()">Logout
+        </button>
     </li>
   </ul>
+</div>
 
- 
-<textarea [(ngModel)]="messageText"  cols="30" rows="10"></textarea>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Chat</div>
+  </div>
+
+  <div class="panel-body">
+    <ul>
+      <li *ngFor="let message of messages | async">
+        <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
+
+        <label>{{message?.userName}} :</label>
+        <label> {{message?.text}} </label>
+
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="panel-footer">
+    <div class="form-group">
+      <form ng-submit="sendMessage()">
+      <label for="message">Message</label>
+      <input [(ngModel)]="messageText" type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="here is text">
+    </form>
+    </div>
+    <button (click)="sendMessage()" class="btn btn-outline-info">SendMessage</button>
+
+  </div>
 
 
-<button (click)="sendMessage()">SendMessage</button>
+</div>

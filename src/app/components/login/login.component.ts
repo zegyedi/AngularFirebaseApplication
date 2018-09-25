@@ -21,6 +21,9 @@ export class LoginComponent implements OnInit {
 
   }
   doGoogleLogin() {
-    this.auth.SignedInGoogle();
+    this.auth.googleAuth();
+  }
+  doFacebookLogin() {
+    this.auth.facebookAuth();
   }
 }
