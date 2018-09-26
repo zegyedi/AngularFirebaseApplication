@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth/auth.service';
 
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { ChatUser } from '../../user';
+import { ChatUser } from '../../Models/user';
 
 @Component({
   selector: 'app-login',

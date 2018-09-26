@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { map, filter } from 'rxjs/operators';
-import { ChatUser } from '../../user';
+import { map } from 'rxjs/operators';
+import { ChatUser } from '../../Models/user';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { Messages } from '../../messages';
+import { Messages } from '../../Models/messages';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit {
     this.messageContext = this.fireDb.list('/messages');
 
   }
-  
+
   ngOnInit() {
     this.auth.user.pipe(
       map(data => new ChatUser(data.uid, data.displayName, data.email, data.photoURL)))
@@ -49,7 +49,7 @@ export class ChatComponent implements OnInit {
 
   searchInMessages() {
     this.messages = this.messages.pipe(
-      map(items => items.filter(item => item.text.indexOf(this.searchText)>-1)
+      map(items => items.filter(item => item.text.indexOf(this.searchText) > -1)
     ));
   }
 
