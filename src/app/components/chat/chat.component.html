@@ -1,7 +1,7 @@
 <div class="container-fluid">
-{{searchText}}
+  {{searchText}}
 
-<button type="button" (click)="logOut()">Logout</button>
+  <button type="button" (click)="logOut()">Logout</button>
   <div class="row">
     <div class="col-lg-3 offset-lg-2">
       <div class="panelUser">
@@ -9,20 +9,34 @@
         Email: {{user?.email}}
         <img *ngIf="user" [src]="getSercureURl(user.photo_source)" height="100" width="100" />
       </div>
-      
-      <div class="panelSubInput">
-          <div class="form-group">
-            <form ng-submit="searchInMessages()">
-            <label for="message">Search</label>
-            <input [(ngModel)]="searchText" (keyup.enter)="searchInMessages()"  type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="free text">
-          
-          </form>
-          </div>
-          <button (click)="searchInMessages()" class="btn btn-outline-info">Go <i class="glyphicon glyphicon-hand-left"></i></button>
-          <button (click)="searchClear()" class="btn btn-outline-info">Clear <i class="glyphicon glyphicon-hand-left"></i></button>
 
-       </div>
+      <div class="panelSubInput">
+        <div class="form-group">
+          <form ng-submit="searchInMessages()">
+            <label for="message">Search</label>
+            <input [(ngModel)]="searchText" (keyup.enter)="searchInMessages()" type="text" class="form-control" name="message"
+              id="message" aria-describedby="helpId" placeholder="free text">
+
+          </form>
+        </div>
+        <button (click)="searchInMessages()" class="btn btn-outline-info">Go <i class="glyphicon glyphicon-hand-left"></i></button>
+        <button (click)="searchClear()" class="btn btn-outline-info">Clear <i class="glyphicon glyphicon-hand-left"></i></button>
+
+      </div>
     </div>
+    <!-- Channels -->
+    
+      <div class="pannel-body">
+        <ul class="list-group">
+
+          <li *ngFor="let channel of channels"  [class.active]="getRoute() === channel?.name" class="list-group-item" routerLink="/chat/{{channel.name}}">
+                 {{channel?.name}}
+          </li>
+      
+        </ul>
+        </div>
+     
+
     <div class="col-lg-5">
       <div class="panel panel-default  center-block">
         <div class="panel-heading">
@@ -53,7 +67,8 @@
           <div class="form-group">
             <form ng-submit="sendMessage()">
               <label for="message">Message</label>
-              <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()"  type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="Write something here">
+              <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()" type="text" class="form-control" name="message"
+                id="message" aria-describedby="helpId" placeholder="Write something here">
             </form>
           </div>
           <div class="panelSendButton">
