@@ -1,5 +1,7 @@
 <div class="container-fluid">
 {{searchText}}
+
+<button type="button" (click)="logOut()">Logout</button>
   <div class="row">
     <div class="col-lg-3 offset-lg-2">
       <div class="panelUser">
@@ -30,12 +32,13 @@
         </div>
 
         <div class="panel-body panelChatMessages">
-          <ul>
-            <li *ngFor="let message of messages | async">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let message of messages | async">
+            
               <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
-
               <label>{{message?.userName}} :</label>
               <label> {{message?.text}} </label>
+              <small id="emailHelp" class="form-text text-muted">{{message?.createdDate}}</small>
 
             </li>
           </ul>
