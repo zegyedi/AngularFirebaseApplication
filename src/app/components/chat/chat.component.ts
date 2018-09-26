@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { ChatUser } from '../../user';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Messages } from '../../messages';
@@ -22,6 +22,7 @@ export class ChatComponent implements OnInit {
   testUser: Observable<ChatUser>;
 
   messageText = '';
+  searchText = '';
 
   constructor(private auth: AuthService, private sec: DomSanitizer, private fireDb: AngularFireDatabase) {
     this.userContext = this.fireDb.list('/users');
@@ -44,6 +45,17 @@ export class ChatComponent implements OnInit {
   sendMessage() {
     this.messageContext.push(new Messages(this.user.displayName, this.user.photo_source, this.messageText));
     this.messageText = '';
+  }
+
+  searchInMessages() {
+    this.messages = this.messages.pipe(
+      map(items => items.filter(item => item.text.indexOf(this.searchText)>-1)
+    ));
+  }
+
+  searchClear() {
+    this.searchText = '';
+    this.searchInMessages();
   }
 
   logOut() {
