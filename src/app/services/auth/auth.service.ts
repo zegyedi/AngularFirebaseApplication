@@ -23,7 +23,7 @@ export class AuthService {
     try {
       await this.fireBaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).
         then(() => {
-          this.route.navigateByUrl('chat');
+          this.route.navigateByUrl('chat/main');
         });
     } catch (error) {
       console.log(error);
@@ -34,7 +34,7 @@ export class AuthService {
     try {
       await this.fireBaseAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).
         then(() => {
-          this.route.navigateByUrl('chat');
+          this.route.navigateByUrl('chat/main');
         });
     } catch (error) {
       console.log(error);
