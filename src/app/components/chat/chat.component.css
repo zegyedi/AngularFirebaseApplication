@@ -43,6 +43,10 @@
     overflow: auto;
 }
 
+.panelChatMessages>li{
+    list-style: none !important;
+}
+
 .panelSendButton{
     text-align: right;
 }

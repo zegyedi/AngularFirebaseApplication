@@ -1,0 +1,20 @@
+.dropdown-toggle{
+    color: white;
+}
+
+.dropdown-toggle .glyphicon{
+    font-size: 25px;
+}
+
+.align-right{
+    text-align: right !important;
+}
+
+.panel-heading{
+    font-size: x-large;
+    padding: 0px;
+}
+
+.navbar{
+    margin: 0px !important;
+}
