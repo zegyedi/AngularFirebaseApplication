@@ -31,7 +31,7 @@
 
         <div class="panel-body panelChatMessages">
           <ul>
-            <li *ngFor="let message of messages | async">
+            <li *ngFor="let message of messages | async" class="panelMessage">
               <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
 
               <label>{{message?.userName}} :</label>
@@ -47,17 +47,18 @@
   <div class="fixed-bottom">
     <div class="row">
       <div class="col-lg-5 offset-lg-5">
-  <div class="panelMainInput">
-      <div class="form-group">
-        <form ng-submit="sendMessage()">
-        <label for="message">Message</label>
-        <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()"  type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="free text">
-      
-      </form>
+        <div class="panelMainInput">
+          <div class="form-group">
+            <form ng-submit="sendMessage()">
+              <label for="message">Message</label>
+              <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()"  type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="Write something here">
+            </form>
+          </div>
+          <div class="panelSendButton">
+            <button (click)="sendMessage()" class="btn btn-outline-info">Send message <i class="glyphicon glyphicon-hand-left"></i></button>
+          </div>
+        </div>
       </div>
-      <button (click)="sendMessage()" class="btn btn-outline-info">SendMessage <i class="glyphicon glyphicon-hand-left"></i></button>
     </div>
-  </div>
-  </div>
   </div>
 </div>
