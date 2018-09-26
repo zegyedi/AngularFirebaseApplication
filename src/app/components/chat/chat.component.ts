@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit {
     this.messageContext = this.fireDb.list('/messages');
 
   }
-  alma: any;
+  
   ngOnInit() {
     this.auth.user.pipe(
       map(data => new ChatUser(data.uid, data.displayName, data.email, data.photoURL)))
@@ -43,9 +43,11 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
     this.messageContext.push(new Messages(this.user.displayName, this.user.photo_source, this.messageText));
+    this.messageText = '';
   }
 
   logOut() {
+    this.auth.user.subscribe().unsubscribe();
     this.auth.logOut();
   }
 

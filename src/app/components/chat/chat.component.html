@@ -1,27 +1,21 @@
-<div id="navbar" class="navbar-collapse collapse">
-  <ul class="nav navbar-nav">
-    <li class="active">
 
-      UserName : <div>{{user?.displayName}}</div>
-    </li>
-    <li><a>
-        Email: {{user?.email}}
-      </a></li>
-    <li><a>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header text-left aligned-left">
+      
+            UserName : <div>{{user?.displayName}}</div>
+            Email: {{user?.email}}
+            <img *ngIf="user" [src]="getSercureURl(user.photo_source)" height="100" width="100" />
+     
+      </div>
+    </div>
+  </nav>
 
-        <img *ngIf="user" [src]="getSercureURl(user.photo_source)" height="100" width="100" />
-      </a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-    <li><button class="btn btn-primary btn-success btn-lg" (click)="logOut()">Logout
-        </button>
-    </li>
-  </ul>
-</div>
-
-<div class="panel panel-default">
+<div class="panel panel-default  center-block">
   <div class="panel-heading">
-    <div class="panel-title">Chat</div>
+    <div class="panel-title">Chat
+      <i class="glyphicon glyphicon-comment"></i>
+    </div>
   </div>
 
   <div class="panel-body">
@@ -34,17 +28,17 @@
 
       </li>
     </ul>
-
   </div>
 
   <div class="panel-footer">
     <div class="form-group">
       <form ng-submit="sendMessage()">
       <label for="message">Message</label>
-      <input [(ngModel)]="messageText" type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="here is text">
+      <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()"  type="text" class="form-control" name="message" id="message" aria-describedby="helpId" placeholder="free text">
+     
     </form>
     </div>
-    <button (click)="sendMessage()" class="btn btn-outline-info">SendMessage</button>
+    <button (click)="sendMessage()" class="btn btn-outline-info">SendMessage <i class="glyphicon glyphicon-hand-left"></i></button>
 
   </div>
 
