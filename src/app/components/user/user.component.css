@@ -1,0 +1,39 @@
+.panelMain{
+    font: larger;
+    font-weight: bolder;
+    color: white;
+}
+
+.open>.dropdown-menu {
+    width: 100% !important;
+}
+
+.buttonLogOut{
+    width: 100%;
+    background-color: #337ab7;
+}
+
+.panelLogout{
+    background-color: #337ab7;
+    padding: 0px !important;
+}
+
+.panelUserImage{
+    text-align: center;
+    padding: 0px !important;
+    background-color: #6f98bd;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.imgUser{
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    padding:1px;
+    border:1px solid #021a40;
+}
+
+.panelUserInfo{
+    background-color: #337ab7;
+}

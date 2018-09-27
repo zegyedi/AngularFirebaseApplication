@@ -1,14 +1,11 @@
 <div class="container-fluid">
   {{searchText}}
 
-  <button type="button" (click)="logOut()">Logout</button>
   <div class="row">
     <div class="col-lg-3 offset-lg-2">
-      <div class="panelUser">
-        UserName : <div>{{user?.displayName}}</div>
-        Email: {{user?.email}}
-        <img *ngIf="user" [src]="getSercureURl(user.photo_source)" height="100" width="100" />
-      </div>
+
+          <!-- Channels -->
+     <app-channel></app-channel>
 
       <div class="panelSubInput">
         <div class="form-group">
@@ -24,9 +21,6 @@
 
       </div>
     </div>
-    <!-- Channels -->
-     <app-channel></app-channel>
-
 
     <div class="col-lg-5">
       <div class="panel panel-default  center-block">

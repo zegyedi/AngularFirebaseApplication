@@ -1,0 +1,28 @@
+<div class="container panelMain">
+    <div class="row">
+        <div class="col-4 panelUserInfo">
+            Login:
+        </div>
+        <div class="col-8 panelUserInfo">
+            {{user?.displayName}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 panelUserInfo">
+             Email:
+        </div>
+        <div class="col-8 panelUserInfo">
+            {{user?.email}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 panelUserImage">
+            <img *ngIf="user" [src]="getSercureURl(user.photo_source)" class="imgUser" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center panelLogout">
+            <button type="button" (click)="logOut()" class="buttonLogOut">Logout</button>
+        </div>
+    </div>
+</div>

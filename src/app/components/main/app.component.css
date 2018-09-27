@@ -7,7 +7,7 @@
 }
 
 .align-right{
-    text-align: right !important;
+    
 }
 
 .panel-heading{
@@ -17,4 +17,8 @@
 
 .navbar{
     margin: 0px !important;
+}
+
+.dropdownSettings{
+    width: 200px !important;
 }

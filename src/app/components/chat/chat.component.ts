@@ -76,11 +76,6 @@ export class ChatComponent implements OnInit {
     this.searchInMessages();
   }
 
-  logOut() {
-    this.auth.user.subscribe().unsubscribe();
-    this.auth.logOut();
-  }
-
   getSercureURl(url: string) {
     return this.sec.bypassSecurityTrustUrl(url);
   }

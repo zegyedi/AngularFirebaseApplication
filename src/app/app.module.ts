@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { ChannelComponent } from './components/channel/channel.component';
+import { UserComponent } from './components/user/user.component';
+import { AuthService } from './services/auth/auth.service';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ChannelComponent } from './components/channel/channel.component';
     AppComponent,
     LoginComponent,
     ChatComponent,
-    ChannelComponent
+    ChannelComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,10 @@ import { ChannelComponent } from './components/channel/channel.component';
 
   ],
 
-  providers: [AngularFireDatabase],
+  providers: [
+    AngularFireDatabase,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
