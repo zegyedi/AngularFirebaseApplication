@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit {
 
   testUser: Observable<ChatUser>;
 
-  channels: Channel[] = [{ name: 'main' }, { name: 'test2' }, { name: 'test3' }];
+ 
 
   messageText = '';
   searchText = '';
@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit {
 
     this.route.events.subscribe((event) => {
         if (event instanceof NavigationEnd) {
-            this.loadData();
+            this.loadMessageData();
         }
 
   });
@@ -56,7 +56,8 @@ export class ChatComponent implements OnInit {
       });
 
   }
-  loadData() {
+
+  loadMessageData() {
     this.messages = this.messageContext.valueChanges().pipe(
       map(items => items.filter(item => item.channelName === this.getSelectedChannelName())
       ));
@@ -64,7 +65,7 @@ export class ChatComponent implements OnInit {
   }
 
   getSelectedChannelName(): string {
-    return  this.activatedRoute.snapshot.paramMap.get('name');
+    return  this.activatedRoute.snapshot.paramMap.get('name').toLowerCase();
   }
 
   sendMessage() {

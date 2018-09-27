@@ -1,0 +1,18 @@
+<div class="pannel-body">
+    <ul class="list-group">
+
+      <li *ngFor="let channel of channels"  [class.active]="isActive(channel?.name)" class="list-group-item" routerLink="/chat/{{channel.name}}">
+             {{channel?.name}}
+      </li>
+
+      <li>
+      <div class="form-group">
+        <label for="channel"></label>
+        <input type="text" (keyup.enter)="addChannel($event.target.value)"
+            class="form-control form-control-sm" name="channel" id="channel" aria-describedby="helpId" placeholder="add channel">
+        <small id="helpId" class="form-text text-muted">push enter</small>
+      </div>
+      </li>
+  
+    </ul>
+    </div>

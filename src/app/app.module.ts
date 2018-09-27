@@ -9,13 +9,15 @@ import { ChatComponent } from './components/chat/chat.component';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
+import { ChannelComponent } from './components/channel/channel.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ChatComponent
+    ChatComponent,
+    ChannelComponent
   ],
   imports: [
     BrowserModule,

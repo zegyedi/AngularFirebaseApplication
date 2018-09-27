@@ -25,16 +25,8 @@
       </div>
     </div>
     <!-- Channels -->
-    
-      <div class="pannel-body">
-        <ul class="list-group">
+     <app-channel></app-channel>
 
-          <li *ngFor="let channel of channels"  [class.active]="getSelectedChannelName() === channel?.name" class="list-group-item" routerLink="/chat/{{channel.name}}">
-                 {{channel?.name}}
-          </li>
-      
-        </ul>
-        </div>
 
     <div class="col-lg-5">
       <div class="panel panel-default  center-block">
