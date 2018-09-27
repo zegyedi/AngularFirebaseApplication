@@ -45,7 +45,7 @@
         </div>
 
         <div class="panel-body panelChatMessages">
-          <ul>
+          <ul class="panel-list">
             <li *ngFor="let message of messages | async" class="panelMessage">
               <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
               <label>{{message?.userName}} :</label>

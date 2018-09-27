@@ -1,9 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <div class="panel-title "> Welcome to {{ title }}!</div>
-  </div>
-
+      <div class="container header">
+        <div class="row">
+          <div class="col-11 text-center">
+        Welcome to {{ title }}!
+        </div>
+        <div class="col-1 align-right">
+            <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <p class="glyphicon glyphicon-cog"></p>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+      </div>
+      </div>
 <div class="panel-body">
     <router-outlet></router-outlet>
 </div>
