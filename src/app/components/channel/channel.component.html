@@ -1,7 +1,7 @@
 <div class="pannel-body">
     <ul class="list-group">
 
-      <li *ngFor="let channel of channels"  [class.active]="isActive(channel?.name)" class="list-group-item" routerLink="/chat/{{channel.name}}">
+      <li *ngFor="let channel of channels | async"  [class.active]="isActive(channel?.name)" class="list-group-item" routerLink="/chat/{{channel.name}}">
              {{channel?.name}}
       </li>
 

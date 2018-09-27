@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Channel } from '../../models/channel';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-channel',
@@ -9,11 +11,16 @@ import { Channel } from '../../models/channel';
 })
 export class ChannelComponent implements OnInit {
 
-  channels: Channel[] = [{ name: 'Main' }, { name: 'Fun' }, { name: 'Friendship' }];
+  channels: Observable<Channel[]>;
+  channelContext: AngularFireList<Channel>;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+
+  constructor(private activatedRoute: ActivatedRoute, private fireDb: AngularFireDatabase) {
+    this.channelContext = this.fireDb.list('/channels');
+   }
 
   ngOnInit() {
+    this.channels = this.channelContext.valueChanges();
   }
 
   isActive(channel?: string): boolean {
@@ -22,7 +29,7 @@ export class ChannelComponent implements OnInit {
 
   addChannel(channelName: string)
   {
-    this.channels.push(new Channel(channelName));
+    this.channelContext.push(new Channel(channelName));
 
   }
 
