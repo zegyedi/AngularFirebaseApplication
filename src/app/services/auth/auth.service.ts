@@ -4,10 +4,6 @@ import { Observable } from 'rxjs';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 
-import { map } from 'rxjs/operators';
-import { async } from 'rxjs/internal/scheduler/async';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,7 +25,6 @@ export class AuthService {
       console.log(error);
     }
   }
-
   async facebookAuth() {
     try {
       await this.fireBaseAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).
@@ -40,7 +35,6 @@ export class AuthService {
       console.log(error);
     }
   }
-
   isLoggedIn(): boolean {
     return !this.user == null;
   }

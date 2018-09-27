@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ChatUser } from '../../Models/user';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Messages } from '../../Models/messages';
 import { Observable } from 'rxjs';
-import { Channel } from '../../models/channel';
 import { ActivatedRoute, Router, NavigationEnd,  } from '@angular/router';
 
 @Component({
@@ -18,13 +17,8 @@ export class ChatComponent implements OnInit {
   user: ChatUser;
   userContext: AngularFireList<ChatUser>;
   messageContext: AngularFireList<Messages>;
-
   messages: Observable<Messages[]>;
-
   testUser: Observable<ChatUser>;
-
- 
-
   messageText = '';
   searchText = '';
 
@@ -51,8 +45,6 @@ export class ChatComponent implements OnInit {
       )
       .subscribe(user => {
         this.user = user;
-        //  this.userContext.push( this.user);
-        console.log(this.user);
       });
 
   }
