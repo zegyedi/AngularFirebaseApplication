@@ -7,7 +7,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Messages } from '../../Models/messages';
 import { Observable } from 'rxjs';
 import { Channel } from '../../models/channel';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd,  } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -31,11 +31,19 @@ export class ChatComponent implements OnInit {
   constructor(private auth: AuthService,
     private sec: DomSanitizer,
     private fireDb: AngularFireDatabase,
-    private route: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private route: Router) {
 
     this.userContext = this.fireDb.list('/users');
     this.messageContext = this.fireDb.list('/messages');
-  }
+
+    this.route.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+            this.loadData();
+        }
+
+  });
+}
 
   ngOnInit() {
     this.auth.user.pipe(
@@ -47,19 +55,20 @@ export class ChatComponent implements OnInit {
         console.log(this.user);
       });
 
+  }
+  loadData() {
     this.messages = this.messageContext.valueChanges().pipe(
-      map(items => items.filter(item => item.channelName.indexOf(this.getRoute()) > -1)
+      map(items => items.filter(item => item.channelName === this.getSelectedChannelName())
       ));
-
 
   }
 
-  getRoute(): string {
-    return  this.route.snapshot.paramMap.get('name');
+  getSelectedChannelName(): string {
+    return  this.activatedRoute.snapshot.paramMap.get('name');
   }
 
   sendMessage() {
-    this.messageContext.push(new Messages(this.user.displayName, this.user.photo_source, this.messageText, this.getRoute()));
+    this.messageContext.push(new Messages(this.user.displayName, this.user.photo_source, this.messageText, this.getSelectedChannelName()));
     this.messageText = '';
   }
 
