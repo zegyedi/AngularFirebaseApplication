@@ -1,5 +1,4 @@
-<div class="container-fluid">
-  {{searchText}}
+<div class="container-fluid panelMain">
 
   <div class="row">
     <div class="col-lg-3 offset-lg-2">
@@ -31,11 +30,11 @@
         </div>
 
         <div class="panel-body panelChatMessages">
-          <ul class="panel-list">
-            <li *ngFor="let message of messages | async" class="panelMessage">
+          <ul class="panel-list panelMessageList">
+            <li *ngFor="let message of messages | async">
               <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
-              <label>{{message?.userName}} :</label>
-              <label> {{message?.text}} </label>
+              <div class="panelMsgUser"><label>{{message?.userName}} :</label></div>
+              <div class="panelMessage"><label> {{message?.text}} </label></div>
               <small id="emailHelp" class="form-text text-muted">{{message?.createdDate}}</small>
 
             </li>

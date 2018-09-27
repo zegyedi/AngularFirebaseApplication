@@ -2,3 +2,7 @@
 .list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover{
     background-color: #337ab7;
 }
+
+ul{
+    list-style-type:none;
+}

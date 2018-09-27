@@ -1,3 +1,7 @@
+ul{
+    list-style-type:none;
+}
+
 .panelMainInput{
     padding: 10px 15px;
     background-color: #f5f5f5;
@@ -64,14 +68,25 @@
     width: 30%;
 }
 
+.panelMsgUser{
+    display: inline;
+    margin-left: 10px;
+}
+
 .panelMessage{
+    display: inline;
     border: 1px solid #c8dbf7;
-    width: fit-content;
     border-radius: 15px;
     margin: 5px;
-    padding:2px;
+    margin-left: 20px;
+    padding:10px;
     padding-right: 8px;
-    background-color: #e2eeff;
+    background-color: #eef4fc;
     font-family: "Comic Sans MS";
     font-size: 140%;
+    font-weight: 700;
+}
+
+.panelMessageList{
+    padding: 0px;
 }
