@@ -10,18 +10,18 @@
 
 .buttonLogOut{
     width: 100%;
-    background-color: #337ab7;
+    background-color: #559cdb;
 }
 
 .panelLogout{
-    background-color: #337ab7;
+    background-color: #559cdb;
     padding: 0px !important;
 }
 
 .panelUserImage{
     text-align: center;
     padding: 0px !important;
-    background-color: #6f98bd;
+    background-color: #acd5f8;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -35,5 +35,5 @@
 }
 
 .panelUserInfo{
-    background-color: #337ab7;
+    background-color: #559cdb;
 }
