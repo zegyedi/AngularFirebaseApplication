@@ -43,8 +43,8 @@ ul{
 }
 
 .panelChatMessages{
-    height: 80vh;
-    overflow: auto;
+    height: 68vh;
+    overflow: scroll;
 }
 
 .panelChatMessages>li{
@@ -87,6 +87,23 @@ ul{
     font-weight: 700;
 }
 
+
+.panelMessage li {
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);
+  }
+.panelImgMessage > img {
+    display: block;
+   
+    margin: 5px;
+    margin-left: 20px;
+    padding:10px;
+    padding-right: 8px;
+   
+}
+
 .panelMessageList{
     padding: 0px;
 }
+

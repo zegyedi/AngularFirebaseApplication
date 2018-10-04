@@ -4,13 +4,20 @@ export class Messages {
     text: string;
     createdDate: string;
     channelName: string;
+    fileDownloadUrl: string;
 
-    constructor(userName: string, userPhoto: string, message: string, channelName: string) {
-        this.userName = userName;
-        this.userPhoto = userPhoto;
-        this.text = message;
-        this.createdDate =  new Date().toLocaleString();
-        this.channelName = channelName;
+    constructor(
+        _userName: string,
+        _userPhoto: string,
+        _message: string,
+        _channelName: string,
+        _fileDownloadUrl: string = null
+        ) {
+        this.userName = _userName;
+        this.userPhoto = _userPhoto;
+        this.text = _message;
+        this.createdDate = new Date().toLocaleString();
+        this.channelName = _channelName;
+        this.fileDownloadUrl = _fileDownloadUrl;
+        }
     }
-}
-

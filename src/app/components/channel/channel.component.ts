@@ -27,8 +27,7 @@ export class ChannelComponent implements OnInit {
     return this.activatedRoute.snapshot.paramMap.get('name').toLowerCase() === channel.toLowerCase();
   }
 
-  addChannel(channelName: string)
-  {
+  addChannel(channelName: string) {
     this.channelContext.push(new Channel(channelName));
 
   }

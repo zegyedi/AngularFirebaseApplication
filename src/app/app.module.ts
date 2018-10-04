@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { ChannelComponent } from './components/channel/channel.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthService } from './services/auth/auth.service';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,9 +26,11 @@ import { AuthService } from './services/auth/auth.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AppRoutingModule,
+    AngularFireStorageModule,
     AngularFireDatabaseModule,
     FormsModule
 
