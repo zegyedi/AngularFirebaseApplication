@@ -1,11 +1,16 @@
-<div class="container-fluid panelMain">
+<!-- Sidebar -->
 
-  <div class="row">
-    <div class="col-lg-3 offset-lg-2">
-      <!-- Channels -->
-      <app-channel></app-channel>
 
-      <div class="panelSubInput">
+
+
+<!-- /#sidebar-wrapper -->
+
+<!-- Page Content -->
+
+
+<!-- Channels -->
+
+<!--    <div class="panelSubInput">
         <div class="form-group">
           <form ng-submit="searchInMessages()">
             <label for="message">Search</label>
@@ -17,44 +22,36 @@
         <button (click)="searchInMessages()" class="btn btn-outline-info">Go <i class="glyphicon glyphicon-hand-left"></i></button>
         <button (click)="searchClear()" class="btn btn-outline-info">Clear <i class="glyphicon glyphicon-hand-left"></i></button>
 
-      </div>
-
-
     </div>
-
-    <div class="col-lg-5">
+     -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-9">
       <div class="panel panel-default  center-block">
         <div class="panel-heading">
           <div class="panel-title">Chat
             <i class="glyphicon glyphicon-comment"></i>
-            <a role="button" class="float-right" (click)="removeMessages()">
+            <a role="button" class="float-right" (click)="deleteAllMessages()">
               <i class="material-icons"> layers_clear </i>
             </a>
           </div>
-
         </div>
-        <div class="panel-body panelChatMessages" >
-          <ul class="panel-list panelMessageList ">
-            <li *ngFor="let message of messages | async"   [@myTrigger]="message.state"  >
+        <div class="panel-body panelChatMessages">
+          <ul class="panel-list panelMessageList " [@myTrigger]="itemsLength">
+            <li *ngFor="let message of messages | async">
               <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
               <div class="panelMsgUser"><label>{{message?.userName}} :</label></div>
               <div *ngIf="message?.text !== ''" class="panelMessage"><label> {{message?.text}} </label></div>
-              <div *ngIf="message?.fileDownloadUrl" class="panelImgMessage"  (click)='toggleAnimation()'>
-                <img   [src]="message?.fileDownloadUrl" width="20%" height="20%"  [alt]="message?.fileDownloadUrl" />
-               </div>
+              <div *ngIf="message?.fileDownloadUrl" class="panelImgMessage" (click)='toggleAnimation()'>
+                <img [src]="message?.fileDownloadUrl" width="20%" height="20%" [alt]="message?.fileDownloadUrl" />
+              </div>
               <small id="emailHelp" class="form-text text-muted">{{message?.createdDate}}</small>
-
             </li>
           </ul>
         </div>
       </div>
-    </div>
-  </div>
 
-
-  <div class="fixed-bottom">
-    <div class="row">
-      <div class="col-lg-5 offset-lg-5">
+      <div class="fixed-bottom">
         <div class="panelMainInput">
           <div class="form-group">
             <form ng-submit="sendMessage()">
@@ -77,6 +74,17 @@
           </div>
         </div>
       </div>
+
     </div>
+    <div class="row">
+      <div class="col-xs-3">
+        <app-chatroom></app-chatroom>
+      </div>
+
+      <div class="col-xs-3">
+        loggedInUser
+      </div>
+
+    </div>
+
   </div>
-</div>

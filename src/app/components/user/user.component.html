@@ -1,4 +1,9 @@
-<div class="container panelMain">
+<ul class="nav navbar-nav navbar-right">
+    <li><a role="button" (click)="logOut()"><span class="glyphicon glyphicon-cog"></span> Log out</a></li>
+    <li *ngIf="user"> <img [src]="getSercureURl(user?.photo_source)" height="50" width="50" style="border-radius:50%" /></li>
+</ul>
+
+<!-- <div *ngIf="user" class="container panelMain">
     <div class="row">
         <div class="col-4 panelUserInfo">
             Login:
@@ -9,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-4 panelUserInfo">
-             Email:
+            Email:
         </div>
         <div class="col-8 panelUserInfo">
             {{user?.email}}
@@ -17,12 +22,7 @@
     </div>
     <div class="row">
         <div class="col-12 panelUserImage">
-            <img *ngIf="user" [src]="getSercureURl(user.photo_source)" class="imgUser" />
+            <img [src]="getSercureURl(user?.photo_source)" class="imgUser" />
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 text-center panelLogout">
-            <button type="button" (click)="logOut()" class="buttonLogOut">Logout</button>
-        </div>
-    </div>
-</div>
+</div> -->

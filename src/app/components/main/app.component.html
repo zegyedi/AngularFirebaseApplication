@@ -1,27 +1,46 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="panel panel-primary">
-  <div class="panel-heading">
-      <div class="container header">
-        <div class="row">
-          <div class="col-10 text-center">
-        Welcome to {{ title }}!
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Chat</a>
         </div>
-        <div class="col-2 align-right">
-            <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+        <!-- Menu Items -->
+        <div class="collapse navbar-collapse" id="mainNavBar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Login</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li>
+                </li>
+            </ul>
+
+            <app-user></app-user>
+
+
+        </div>
+
+    </div>
+
+    <!--   <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <p class="glyphicon glyphicon-cog"></p>
             </a>
             <div class="dropdown-menu dropdownSettings" aria-labelledby="navbarDropdown">
-                <app-user></app-user>
+              
             </div>
-          </nav>
-        </div>
-      </div>
-      </div>
-      </div>
-<div class="panel-body">
+        </nav> -->
+
+</nav>
+
+<!--The content below is only a placeholder and can be
+                            reä[[placed.-->
+<div id="container">
     <router-outlet></router-outlet>
-</div>
-
-
 </div>
