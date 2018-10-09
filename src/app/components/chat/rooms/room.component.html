@@ -5,7 +5,7 @@
   <ul class="list-group list-group-flush">
     <li *ngFor="let room of rooms | async" [class.active]="isActive(room?.name)" class="list-group-item" routerLink="/chat/{{room.name}}">
       {{room?.name}}
-      <span class="badge badge-primary badge-pill">14</span>
+      <span class="badge badge-primary badge-pill">{{messageLength}}</span>
     </li>
   </ul>
 </div>

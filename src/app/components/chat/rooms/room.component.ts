@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Room } from '../../../models/room';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { Messages } from '../../../Models/messages';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chatroom',
@@ -12,6 +14,9 @@ import { Observable } from 'rxjs';
 export class RoomComponent implements OnInit {
   rooms: Observable<Room[]>;
   roomContext: AngularFireList<Room>;
+  messageCount: number;
+  @Input()
+  messageLength: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,

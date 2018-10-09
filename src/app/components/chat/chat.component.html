@@ -1,6 +1,9 @@
 <!-- Sidebar -->
 
 
+<a role="button" style="float:right" (click)="deleteAllMessages()">
+  <i class="material-icons"> layers_clear </i>
+</a>
 
 
 <!-- /#sidebar-wrapper -->
@@ -24,67 +27,65 @@
 
     </div>
      -->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-9">
-      <div class="panel panel-default  center-block">
-        <div class="panel-heading">
-          <div class="panel-title">Chat
-            <i class="glyphicon glyphicon-comment"></i>
-            <a role="button" class="float-right" (click)="deleteAllMessages()">
-              <i class="material-icons"> layers_clear </i>
-            </a>
+
+<div class="row">
+  <div class="col-xs-9">
+    <div class="panel panel-default  center-block">
+      <div class="panel-body panelChatMessages">
+        <ul class="panel-list panelMessageList " [@myTrigger]="itemsLength">
+          <li *ngFor="let message of messages | async">
+            <img style="border-radius: 50%" height="10%" width="10%" [src]="getSercureURl(message.userPhoto)" />
+            <div class="panelMsgUser"><label>{{message?.userName}} :</label></div>
+            <div *ngIf="message?.text !== ''" class="panelMessage"><label> {{message?.text}} </label></div>
+            <div *ngIf="message?.fileDownloadUrl" class="panelImgMessage" (click)='toggleAnimation()'>
+              <img [src]="message?.fileDownloadUrl" width="20%" height="20%" [alt]="message?.fileDownloadUrl" />
+            </div>
+            <p><small id="emailHelp" class="form-text text-muted">{{message?.createdDate}}</small></p>
+          </li>
+        </ul>
+      </div>
+      <div class="panel-footer">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-toggle="tab" href="#messageSending">Messages</a></li>
+          <li><a data-toggle="tab" href="#fileShare">File</a></li>
+          <li><a data-toggle="tab" href="#">Gif</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div id="messageSending" class="tab-pane fade in active">
+            <div class="form-group">
+              <form ng-submit="sendMessage()">
+                <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()" type="text" class="form-control" name="message"
+                  id="message" aria-describedby="helpId" placeholder="Write something here">
+              </form>
+            </div>
+          </div>
+          <div id="fileShare" class="tab-pane fade">
+            <div class="form-group">
+              <input type="file" id="file" (change)="handleFileInput($event.target.files)" accept="image/*">
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" [ngStyle]="{'width.%':  uploadProgress | async }"
+                [attr.aria-valuenow]="uploadProgress | async" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
           </div>
         </div>
-        <div class="panel-body panelChatMessages">
-          <ul class="panel-list panelMessageList " [@myTrigger]="itemsLength">
-            <li *ngFor="let message of messages | async">
-              <img style="border-radius: 50%" height="50" width="50" [src]="getSercureURl(message.userPhoto)" />
-              <div class="panelMsgUser"><label>{{message?.userName}} :</label></div>
-              <div *ngIf="message?.text !== ''" class="panelMessage"><label> {{message?.text}} </label></div>
-              <div *ngIf="message?.fileDownloadUrl" class="panelImgMessage" (click)='toggleAnimation()'>
-                <img [src]="message?.fileDownloadUrl" width="20%" height="20%" [alt]="message?.fileDownloadUrl" />
-              </div>
-              <small id="emailHelp" class="form-text text-muted">{{message?.createdDate}}</small>
-            </li>
-          </ul>
+        <div class="text-right">
+          <button (click)="sendMessage()" class="btn btn-danger">Send message <i class="glyphicon glyphicon-hand-left"></i></button>
         </div>
       </div>
-
-      <div class="fixed-bottom">
-        <div class="panelMainInput">
-          <div class="form-group">
-            <form ng-submit="sendMessage()">
-              <label for="message">Message</label>
-              <input [(ngModel)]="messageText" (keyup.enter)="sendMessage()" type="text" class="form-control" name="message"
-                id="message" aria-describedby="helpId" placeholder="Write something here">
-            </form>
-          </div>
-          <div class="form-group">
-            <label for="file">Choose File</label>
-            <input type="file" id="file" (change)="handleFileInput($event.target.files)" accept="image/*">
-          </div>
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" [ngStyle]="{'width.%':  uploadProgress | async }"
-              [attr.aria-valuenow]="uploadProgress | async" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <div class="panelSendButton">
-            <button (click)="sendMessage()" class="btn btn-outline-info">Send message <i class="glyphicon glyphicon-hand-left"></i></button>
-          </div>
-        </div>
-      </div>
-
     </div>
-    <div class="row">
-      <div class="col-xs-3">
-        <app-chatroom></app-chatroom>
-      </div>
+  </div>
 
-      <div class="col-xs-3">
-        loggedInUser
-      </div>
+</div>
+<div class="row">
+  <div class="col-xs-3">
+    <app-chatroom [messageLength]="(messages | async)?.length"></app-chatroom>
+  </div>
 
-    </div>
+  <div class="col-xs-3">
 
   </div>
+
+</div>
