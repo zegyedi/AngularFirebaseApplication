@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title"><i class="fas fa-door-open"></i>Rooms</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let room of rooms | async" [class.active]="isActive(room?.name)" class="list-group-item" routerLink="/chat/{{room.name}}">
+      {{room?.name}}
+      <span class="badge badge-primary badge-pill">{{messageLength}}</span>
+    </li>
+  </ul>
+</div>
+
+<!-- 
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Rooms
+  </div>
+  <div class="pannel-body">
+    <ul class="list-group">
+
+      <li *ngFor="let room of rooms | async" [class.active]="isActive(room?.name)" class="list-group-item"
+        routerLink="/chat/{{room.name}}">
+        {{room?.name}}
+      </li>
+    </ul>
+  </div>
+          <input type="text" (keyup.enter)="addRoom($event.target.value)" class="form-control form-control-sm" name="room"
+            id="room" aria-describedby="helpId" placeholder="add room">
+          <small id="helpId" class="form-text text-muted">push enter</small> -->

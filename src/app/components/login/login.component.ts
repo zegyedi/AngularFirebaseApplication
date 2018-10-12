@@ -8,15 +8,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   users: Observable<any[]>;
-  constructor(private auth: AuthService) {
-   }
+  constructor(private auth: AuthService) {}
 
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
   doGoogleLogin() {
     this.auth.googleAuth();
   }

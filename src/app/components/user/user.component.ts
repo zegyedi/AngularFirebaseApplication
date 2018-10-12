@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class UserComponent implements OnInit {
 
-  user: ChatUser;
+  user: ChatUser = null;
 
   constructor(private auth: AuthService,
               private sec: DomSanitizer) { }
@@ -32,6 +32,7 @@ export class UserComponent implements OnInit {
   logOut() {
     this.auth.user.subscribe().unsubscribe();
     this.auth.logOut();
+    this.user = null;
   }
 
 }

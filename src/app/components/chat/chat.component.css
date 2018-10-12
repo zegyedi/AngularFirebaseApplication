@@ -1,109 +1,97 @@
-ul{
-    list-style-type:none;
+ul {
+  list-style-type: none;
 }
 
-.panelMainInput{
-    padding: 10px 15px;
-    background-color: #f5f5f5;
-    border-top: 1px solid #ddd;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    margin-top: 100px;
+.panelMainInput {
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
-.panelMainInput input{
-    font-family: "Comic Sans MS";
-    font-size: 120%;
+.panelMainInput input {
+  font-family: 'Comic Sans MS';
+  font-size: 120%;
 }
 
-.panelSubInput{
-    padding: 10px 15px;
-    border-top: 1px solid #ddd;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 200px !important;
+.panelSubInput {
+  padding: 10px 15px;
+  border-top: 1px solid #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 200px !important;
 }
 
-.fixed-bottom{
-    margin-right: 29px;
-    margin-left: 29px !important;
+.fixed-bottom {
+  margin-right: 29px;
+  margin-left: 29px !important;
 }
 
-.panelUser{
-    padding: 10px 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
+.panelUser {
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
 }
 
-.panelUser img{
-    text-align: right;
+.panelUser img {
+  text-align: right;
 }
 
-.panelChatMessages{
-    height: 68vh;
-    overflow: scroll;
+.panelChatMessages {
+  overflow-y: scroll;
+  height: 70vh;
 }
 
-.panelChatMessages>li{
-    list-style: none !important;
+.panelChatMessages > li {
+  list-style: none !important;
 }
 
-.panelSendButton{
-    text-align: right;
+.panelSendButton {
+  text-align: right;
 }
 
-.panelSendButton i{
-    margin-left: 15px;
+.panelSendButton i {
+  margin-left: 15px;
 }
 
-.panelSendButton button{
-    font-size: large;
-    background-color: #6d99db;
-    color: white;
-    border: 1px solid #c8dbf7;
-    border-radius: 5px;
-    width: 30%;
+.panelSendButton button {
+  font-size: large;
+  background-color: #6d99db;
+  color: white;
+  border: 1px solid #c8dbf7;
+  border-radius: 5px;
+  width: 30%;
 }
 
-.panelMsgUser{
-    display: inline;
-    margin-left: 10px;
+.panelMsgUser {
+  display: inline;
+  margin-left: 10px;
 }
 
-.panelMessage{
-    display: inline;
-    border: 1px solid #c8dbf7;
-    border-radius: 15px;
-    margin: 5px;
-    margin-left: 20px;
-    padding:10px;
-    padding-right: 8px;
-    background-color: #eef4fc;
-    font-family: "Comic Sans MS";
-    font-size: 140%;
-    font-weight: 700;
+.panelMessage {
+  display: inline;
+  margin: 5px;
+  margin-left: 20px;
+  padding: 10px;
+  padding-right: 8px;
 }
-
 
 .panelMessage li {
-    opacity: 0;
-    transform: rotateY(-90deg);
-    transition: all 0.5s cubic-bezier(.36,-0.64,.34,1.76);
-  }
+  opacity: 0;
+  transform: rotateY(-90deg);
+  transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+}
 .panelImgMessage > img {
-    display: block;
-   
-    margin: 5px;
-    margin-left: 20px;
-    padding:10px;
-    padding-right: 8px;
-   
+  display: block;
+  margin: 5px;
+  margin-left: 20px;
+  padding: 10px;
+  padding-right: 8px;
 }
 
-.panelMessageList{
-    padding: 0px;
+.panelMessageList {
+  padding: 0px;
 }
-
