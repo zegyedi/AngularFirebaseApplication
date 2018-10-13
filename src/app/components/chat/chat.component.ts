@@ -22,6 +22,7 @@ import {
   query,
   stagger
 } from '@angular/animations';
+import { ChatbotService } from 'src/app/services/chatbot/chatbot.service';
 
 @Component({
   selector: 'app-chat',
@@ -68,7 +69,8 @@ export class ChatComponent implements OnInit {
     private fireDb: AngularFireDatabase,
     private activatedRoute: ActivatedRoute,
     private route: Router,
-    private fireStorage: AngularFireStorage
+    private fireStorage: AngularFireStorage,
+    private chatbotService: ChatbotService
   ) {
     this.userContext = this.fireDb.list('/users');
     this.messageContext = this.fireDb.list('/messages');
@@ -111,7 +113,7 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage() {
-    const newMessages = new Messages(
+    let newMessages = new Messages(
       this.user.displayName,
       this.user.photo_source,
       this.messageText,
@@ -137,6 +139,26 @@ export class ChatComponent implements OnInit {
     } else {
       this.messageContext.push(newMessages);
     }
+
+    // chatbotTalk
+    this.chatbotService.talk(this.messageText).subscribe(res => {
+      const speech = res['result'].fulfillment.speech;
+      newMessages = new Messages(
+        'Chatbot',
+        './img/robotIcon.png',
+        speech,
+        this.getSelectedRoomName()
+      );
+      this.messageContext.push(newMessages);
+    });
+
+    /*   newMessages = new Messages(
+      'Chatbot',
+      './public/img/robotIcon.png',
+      'speech',
+      this.getSelectedRoomName()
+    );
+    this.messageContext.push(newMessages); */
 
     this.messageText = '';
   }

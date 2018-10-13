@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './components/main/app.component';
 import { AngularFireModule } from '@angular/fire';
 import { AppRoutingModule } from './components/modules/app-routing.module';
-import { AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './components/login/login.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { environment } from '../environments/environment';
-import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import {
+  AngularFireDatabaseModule,
+  AngularFireDatabase
+} from '@angular/fire/database';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './components/user/user.component';
 import { AuthService } from './services/auth/auth.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -48,10 +51,11 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 import { RoomComponent } from './components/chat/rooms/room.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ChatbotService } from './services/chatbot/chatbot.service';
 
 @NgModule({
   declarations: [
@@ -72,14 +76,11 @@ import { RoomComponent } from './components/chat/rooms/room.component';
     FormsModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
-
+    MatIconModule,
+    HttpClientModule
   ],
 
-  providers: [
-    AngularFireDatabase,
-    AuthService
-  ],
+  providers: [AngularFireDatabase, AuthService, ChatbotService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
